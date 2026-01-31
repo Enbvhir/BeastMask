@@ -5,6 +5,7 @@ func _physics_process(delta: float) -> void:
 		is_hurted=false
 		hp-=%Hurtbox.damage
 		%Hurtbox.damage=0
+		%AnimationPlayer.play("hurt")
 		print(hp)
 		if hp<=0:
 			dead.emit()

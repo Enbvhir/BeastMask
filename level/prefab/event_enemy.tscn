@@ -1,5 +1,12 @@
 [gd_scene format=3 uid="uid://0w48jlqovaqf"]
 
+[ext_resource type="Script" uid="uid://bfwl26tbayk3l" path="res://level/prefab/event_enemy.gd" id="1_vtspc"]
+
 [node name="EventEnemy" type="Area2D" unique_id=1477731791]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_vtspc")
 
 [node name="Node" type="Node" parent="." unique_id=636652393]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

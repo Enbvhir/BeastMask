@@ -11,6 +11,7 @@ func _physics_process(delta: float) -> void:
 		is_hurted=false
 		hp-=%Hurtbox.damage
 		%Hurtbox.damage=0
+		%AnimationPlayer2.play("hurt")
 		print(hp)
 	velocity.x=0
 	#1/3.状态判断

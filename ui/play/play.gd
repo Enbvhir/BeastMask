@@ -9,7 +9,8 @@ var dict_level={
 var dict_player={
 	"monkey":preload("uid://6bb6evdb8488"),
 	"dragon":preload("uid://c373u7op7kppl"),
-	"bear":preload("uid://qsbc2kitpjnm")
+	"bear":preload("uid://qsbc2kitpjnm"),
+	"wolf":preload("uid://6qiv5d0ni4o0")
 }
 
 func switch_level(str_level:String):
@@ -39,11 +40,12 @@ func switch_player(str_player:String):
 
 func _ready() -> void:
 	player=%Player
+	Global.player=%Player
 	switch_level("level_1")
 
 func _process(delta: float) -> void:
 	if player:camera_2d.position=player.position
 
 func _physics_process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("j"):switch_player("dragon")
 	

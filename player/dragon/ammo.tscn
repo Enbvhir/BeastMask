@@ -24,9 +24,14 @@ script = ExtResource("1_pq0a6")
 collision_layer = 0
 collision_mask = 64
 script = ExtResource("2_nwbqj")
-damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=191805967]
 shape = SubResource("CircleShape2D_rnfoh")
 
+[node name="Timer" type="Timer" parent="." unique_id=807068482]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="Hitbox" to="." method="on_hit_target"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
