@@ -1,5 +1,6 @@
 class_name Level
 extends Node2D
+const CLAWN_COMMON = preload("uid://dmyh7ah4pxn73")
 
 @onready var enter_point: Node = $NodeEnterPoint
 @onready var lt: Marker2D = $NodeCameraRange/LT
@@ -19,3 +20,16 @@ func swicth_player(str_player:String):
 	if node_level:
 		var ui_play=node_level.get_parent()
 		if ui_play:ui_play.call_deferred("switch_player",str_player)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	%Area2D.queue_free()
+	var boss:Enemy=CLAWN_COMMON.instantiate()
+	boss.position=%Marker2DSpawn.position
+	boss.target_position=%Marker2DTarget.position
+	boss.dead.connect(level_pass)
+	Global.node_enemy.call_deferred("add_child",boss)
+	
+
+func level_pass():Global.switch_scene(Global.UI_PASS)
+func level_fail():Global.switch_scene(Global.UI_FAIL)

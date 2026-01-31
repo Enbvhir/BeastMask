@@ -219,7 +219,7 @@ shape = SubResource("RectangleShape2D_o582p")
 [node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=1265264648]
 unique_name_in_owner = true
 collision_layer = 16
-collision_mask = 32
+collision_mask = 128
 script = ExtResource("4_ed10k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=1375015080]

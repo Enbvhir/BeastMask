@@ -87,6 +87,7 @@ j={
 2d_physics/layer_5="hurtbox_player"
 2d_physics/layer_6="hitbox_enemy"
 2d_physics/layer_7="hurtbox_enemy"
+2d_physics/layer_8="hurtbox_environment"
 
 [physics]
 
