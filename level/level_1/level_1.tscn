@@ -1,16 +1,46 @@
-[gd_scene format=3 uid="uid://do05lhdu1wb7n"]
+[gd_scene format=4 uid="uid://do05lhdu1wb7n"]
 
 [ext_resource type="PackedScene" uid="uid://f6yjjjckgan3" path="res://level/level.tscn" id="1_s2urf"]
 [ext_resource type="PackedScene" uid="uid://ciar6x6412wcf" path="res://enemy/environment/trunk.tscn" id="2_b8haq"]
+[ext_resource type="Texture2D" uid="uid://brs1t4h3gsi8e" path="res://level/level_1/back_03.png" id="2_uyioa"]
 [ext_resource type="PackedScene" uid="uid://dxcyuu0c1xu4a" path="res://enemy/environment/stone.tscn" id="3_4t30n"]
 [ext_resource type="PackedScene" uid="uid://cqsril8qu43o6" path="res://mask/dragon.tscn" id="3_e32pu"]
+[ext_resource type="Texture2D" uid="uid://bg6tlwvb4lkg6" path="res://level/level_1/back_02.png" id="3_nmnnl"]
 [ext_resource type="PackedScene" uid="uid://cnrd6ves3ilva" path="res://enemy/zombie/zombie.tscn" id="3_rk12w"]
 [ext_resource type="PackedScene" uid="uid://onf0dtt7mc01" path="res://mask/bear.tscn" id="4_bax5m"]
+[ext_resource type="Texture2D" uid="uid://w5wuvi72lvcs" path="res://level/level_1/tile.png" id="4_fdm8s"]
 [ext_resource type="PackedScene" uid="uid://0w48jlqovaqf" path="res://level/prefab/event_enemy.tscn" id="4_sfbe2"]
 [ext_resource type="PackedScene" uid="uid://82bor0jg8kki" path="res://level/prefab/point_enemy.tscn" id="5_4t30n"]
 [ext_resource type="PackedScene" uid="uid://du3avtuseql8a" path="res://mask/wolf.tscn" id="9_p5edo"]
+[ext_resource type="Texture2D" uid="uid://cxoohtykredyq" path="res://level/level_1/back_01.png" id="12_fdm8s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfmfv"]
+texture = ExtResource("4_fdm8s")
+texture_region_size = Vector2i(40, 40)
+use_texture_padding = false
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qkcq1"]
+tile_size = Vector2i(40, 40)
+sources/0 = SubResource("TileSetAtlasSource_jfmfv")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s2urf"]
+distance = -181.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b8haq"]
 normal = Vector2(1, 0)
@@ -25,22 +55,34 @@ size = Vector2(129, 432)
 
 [node name="Level" unique_id=2042567388 instance=ExtResource("1_s2urf")]
 
+[node name="Parallax2D" type="Parallax2D" parent="." index="0" unique_id=422442861]
+
+[node name="back_03" type="TextureRect" parent="Parallax2D" index="0" unique_id=1513445604]
+offset_right = 5586.0
+offset_bottom = 600.0
+texture = ExtResource("2_uyioa")
+stretch_mode = 1
+
+[node name="Parallax2D2" type="Parallax2D" parent="." index="1" unique_id=226108633]
+
+[node name="back_02" type="Sprite2D" parent="Parallax2D2" index="0" unique_id=1662417529]
+position = Vector2(400, 300)
+texture = ExtResource("3_nmnnl")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." index="2" unique_id=1586733000]
+tile_map_data = PackedByteArray("AAAAAA4AAAADAAEAAAABAA4AAAADAAEAAAACAA4AAAADAAEAAAADAA4AAAADAAEAAAAEAA4AAAADAAEAAAAFAA4AAAADAAEAAAAGAA4AAAADAAEAAAAHAA4AAAADAAEAAAAIAA4AAAADAAEAAAAJAA4AAAADAAEAAAAKAA4AAAADAAEAAAALAA4AAAADAAEAAAAMAA4AAAADAAEAAAANAA4AAAADAAEAAAAOAA4AAAADAAEAAAAPAA4AAAADAAEAAAAQAA4AAAADAAEAAAARAA4AAAADAAEAAAASAA4AAAADAAEAAAATAA4AAAADAAEAAAAUAA4AAAADAAEAAAAVAA4AAAADAAEAAAAWAA4AAAADAAAAAAAXAA4AAAADAAAAAAAYAA4AAAADAAAAAAAZAA4AAAADAAAAAAAaAA4AAAADAAAAAAAbAA4AAAADAAAAAAAcAA4AAAADAAAAAAAdAA4AAAADAAAAAAAeAA4AAAADAAAAAAAfAA4AAAADAAAAAAAgAA4AAAADAAAAAAAhAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAADAAAAAAAFAA0AAAADAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAABAAAAAAAIAA0AAAABAAAAAAAJAA0AAAABAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAQAAgAAAACAAAAAAARAAgAAAAAAAAAAAASAAgAAAAAAAAAAAAOAAgAAAACAAAAAAAPAAgAAAACAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAaAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAWAAUAAAAAAAIAAAAWAAYAAAAAAAMAAAAXAAUAAAABAAIAAAAXAAYAAAABAAMAAAABAAkAAAACAAIAAAABAAoAAAACAAMAAAAaAAcAAAADAAIAAAAWAAQAAAACAAEAAAAWAAMAAAACAAEAAAAWAAIAAAACAAEAAAAWAAEAAAAAAAEAAAAUAAEAAAAAAAEAAAAVAAEAAAAAAAEAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_qkcq1")
+
 [node name="Marker2D" type="Marker2D" parent="NodeEnterPoint" parent_id_path=PackedInt32Array(1359246733) index="0" unique_id=831734122]
 position = Vector2(75, 355)
 
 [node name="RB" parent="NodeCameraRange" parent_id_path=PackedInt32Array(1095783540) index="1" unique_id=1855086809]
 position = Vector2(9351, 449)
 
-[node name="ColorRect" type="ColorRect" parent="." index="2" unique_id=1018386032]
-offset_left = -92.0
-offset_top = 417.0
-offset_right = 9351.0
-offset_bottom = 547.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="3" unique_id=1905761300]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5" unique_id=1905761300]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=984725739]
-position = Vector2(76, 419)
+position = Vector2(76, 270)
 shape = SubResource("WorldBoundaryShape2D_s2urf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" index="1" unique_id=1653750447]
@@ -51,27 +93,27 @@ shape = SubResource("WorldBoundaryShape2D_b8haq")
 position = Vector2(9269, 72)
 shape = SubResource("WorldBoundaryShape2D_e32pu")
 
-[node name="Node2DEnemy" type="Node2D" parent="." index="4" unique_id=639140546]
+[node name="Node2DEnemy" type="Node2D" parent="." index="6" unique_id=639140546]
 unique_name_in_owner = true
 
 [node name="EnemyStone" parent="Node2DEnemy" index="0" unique_id=1404550148 instance=ExtResource("2_b8haq")]
-position = Vector2(447, 416)
+position = Vector2(447, 559)
 scale = Vector2(1.5, 1.5)
 
 [node name="EnemyStone4" parent="Node2DEnemy" index="1" unique_id=276852463 instance=ExtResource("2_b8haq")]
-position = Vector2(1003, 416)
+position = Vector2(1003, 555)
 
 [node name="EnemyStone3" parent="Node2DEnemy" index="2" unique_id=94870789 instance=ExtResource("2_b8haq")]
-position = Vector2(960, 416)
+position = Vector2(960, 554)
 
 [node name="EnemyStone2" parent="Node2DEnemy" index="3" unique_id=212949425 instance=ExtResource("2_b8haq")]
-position = Vector2(919, 416)
+position = Vector2(919, 554)
 
 [node name="EnemyStone5" parent="Node2DEnemy" index="4" unique_id=1139005481 instance=ExtResource("2_b8haq")]
 position = Vector2(1858, 416)
 
 [node name="EnemyTrunk" parent="Node2DEnemy" index="5" unique_id=2102246194 instance=ExtResource("3_4t30n")]
-position = Vector2(695, 419)
+position = Vector2(695, 563)
 scale = Vector2(2, 2)
 
 [node name="EnemyTrunk2" parent="Node2DEnemy" index="6" unique_id=104160810 instance=ExtResource("3_4t30n")]
@@ -83,7 +125,7 @@ position = Vector2(4231, 420)
 scale = Vector2(2, 2)
 
 [node name="Zombie" parent="Node2DEnemy" index="8" unique_id=982433154 instance=ExtResource("3_rk12w")]
-position = Vector2(989, 334)
+position = Vector2(989, 500)
 direction = -1
 
 [node name="EventEnemy" parent="Node2DEnemy" index="9" unique_id=1477731791 instance=ExtResource("4_sfbe2")]
@@ -116,7 +158,7 @@ offset_right = 72.0
 offset_bottom = 129.0
 color = Color(0, 1, 0, 1)
 
-[node name="Node2DItem" type="Node2D" parent="." index="5" unique_id=1549839814]
+[node name="Node2DItem" type="Node2D" parent="." index="7" unique_id=1549839814]
 
 [node name="Dragon" parent="Node2DItem" index="0" unique_id=1691058923 instance=ExtResource("3_e32pu")]
 position = Vector2(1629, 336)
@@ -126,6 +168,12 @@ position = Vector2(3392, 60)
 
 [node name="Wolf" parent="Node2DItem" index="2" unique_id=100251915 instance=ExtResource("9_p5edo")]
 position = Vector2(5432, 198)
+
+[node name="Parallax2D3" type="Parallax2D" parent="." index="8" unique_id=1554859830]
+
+[node name="back_01" type="Sprite2D" parent="Parallax2D3" index="0" unique_id=881566018]
+position = Vector2(400, 300)
+texture = ExtResource("12_fdm8s")
 
 [connection signal="taken" from="Node2DItem/Dragon" to="." method="_on_dragon_taken"]
 [connection signal="taken" from="Node2DItem/Bear" to="." method="_on_bear_taken"]
