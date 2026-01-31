@@ -5,7 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://ciar6x6412wcf" path="res://enemy/environment/trunk.tscn" id="3_ykrsh"]
 [ext_resource type="PackedScene" uid="uid://6qiv5d0ni4o0" path="res://player/wolf/wolf.tscn" id="5_ykrsh"]
 [ext_resource type="PackedScene" uid="uid://dmyh7ah4pxn73" path="res://enemy/clawn_common/clawn_common.tscn" id="6_g14j6"]
+[ext_resource type="PackedScene" uid="uid://bx6o6wkubqudr" path="res://enemy/bird/bird.tscn" id="7_ehkex"]
 [ext_resource type="PackedScene" uid="uid://82bor0jg8kki" path="res://level/prefab/point_enemy.tscn" id="7_vbegm"]
+[ext_resource type="PackedScene" uid="uid://csgs55d48fynu" path="res://enemy/pitahaya/pitahaya.tscn" id="8_ehkex"]
+[ext_resource type="PackedScene" uid="uid://bm06fg7pyxd74" path="res://enemy/maggot/maggot.tscn" id="9_xersf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37kl0"]
 size = Vector2(1956, 135)
@@ -69,5 +72,14 @@ hp = 25.0
 [node name="Marker2D" type="Marker2D" parent="." unique_id=181520317]
 unique_name_in_owner = true
 position = Vector2(465, 142)
+
+[node name="Bird" parent="." unique_id=982433154 instance=ExtResource("7_ehkex")]
+position = Vector2(280, 82)
+
+[node name="Pitahaya" parent="." unique_id=1004508116 instance=ExtResource("8_ehkex")]
+position = Vector2(326, 346)
+
+[node name="Maggot" parent="." unique_id=1035656594 instance=ExtResource("9_xersf")]
+position = Vector2(777, 242)
 
 [editable path="EventEnemy"]

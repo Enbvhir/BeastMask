@@ -1,5 +1,5 @@
 extends Entity
-const SFX_WOLF_ATK_1 = ("uid://b4jbvoykx0v72")
+const SFX_WOLF_ATK_1 = preload("uid://c6alhnk2mscf0")
 const SFX_WOLF_ATK_2 = ("uid://br5pv4ikl8i31")
 
 enum State{NULL,
@@ -93,7 +93,7 @@ func _physics_process(delta: float) -> void:
 				velocity.y=-100
 				%Hitbox1.set_deferred("monitoring",true)
 				%TimerAtk1.start()
-				Global.play_sfx(SFX_WOLF_ATK_1)
+				Global.play_sfx_packed(SFX_WOLF_ATK_1)
 			State.ATK_2:
 				%AnimationPlayer.play("atk_2")
 				%Hitbox2.hurtboxes.clear()
@@ -131,7 +131,7 @@ func _physics_process(delta: float) -> void:
 		State.HURT:
 			is_hurted=false
 		State.ATK_1:
-			velocity.x=direction*1500
+			velocity.x=direction*1000
 	
 	velocity.y+=4000*delta
 	move_and_slide()

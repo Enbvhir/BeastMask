@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b4jbvoykx0v72"
-path="res://.godot/imported/wolf_atk_1.wav-baaa08dc7c05fb86380c7bf8745d4739.sample"
+path="res://.godot/imported/wolf_atk_1.wav-4d53e8894073af9ceccc6abd54a549b1.sample"
 
 [deps]
 
-source_file="res://sound/sfx/wolf_atk_1.wav"
-dest_files=["res://.godot/imported/wolf_atk_1.wav-baaa08dc7c05fb86380c7bf8745d4739.sample"]
+source_file="res://sound/sfx/prefab/wolf_atk_1.wav"
+dest_files=["res://.godot/imported/wolf_atk_1.wav-4d53e8894073af9ceccc6abd54a549b1.sample"]
 
 [params]
 

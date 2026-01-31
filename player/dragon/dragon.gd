@@ -1,5 +1,5 @@
 extends Entity
-const SFX_DRAGON_ATK_1 = ("uid://bkcsrb1ysmjj")
+const SFX_DRAGON_ATK_1 = preload("uid://d37hv6hsj88vd")
 const SFX_DRAGON_ATK_2 = ("uid://boakk5vcp6d3d")
 
 enum State{NULL,
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 				%Hitbox.hurtboxes.clear()
 				%Hitbox.set_deferred("monitoring",true)
 				%GPUParticles2D.restart()
-				Global.play_sfx(SFX_DRAGON_ATK_1)
+				Global.play_sfx_packed(SFX_DRAGON_ATK_1)
 			State.ATK_2:
 				%AnimationPlayer.play("atk")
 				var a=AMMO.instantiate()

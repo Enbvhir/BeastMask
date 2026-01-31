@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://csgs55d48fynu"]
+
+[ext_resource type="Script" uid="uid://ikw18524yrdy" path="res://enemy/pitahaya/pitahaya.gd" id="1_oln7i"]
+[ext_resource type="Texture2D" uid="uid://c2jywwg141lgc" path="res://enemy/pitahaya/pitahaya.png" id="1_pjr53"]
+[ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="2_jf114"]
+[ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="3_pba6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pba6f"]
+size = Vector2(62, 39)
+
+[sub_resource type="Animation" id="Animation_oln7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ipq6p"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghpp2"]
+_data = {
+&"RESET": SubResource("Animation_oln7i"),
+&"idle": SubResource("Animation_ipq6p")
+}
+
+[sub_resource type="Animation" id="Animation_wy826"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ghpp2"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wy826"]
+_data = {
+&"RESET": SubResource("Animation_wy826"),
+&"hurt": SubResource("Animation_ghpp2")
+}
+
+[node name="Pitahaya" type="CharacterBody2D" unique_id=1004508116]
+script = ExtResource("1_oln7i")
+hp = 20.0
+
+[node name="Graphic" type="Node2D" parent="." unique_id=1649348044]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=1670667439]
+position = Vector2(0, -38)
+texture = ExtResource("1_pjr53")
+hframes = 2
+
+[node name="Hitbox" type="Area2D" parent="Graphic" unique_id=1982249515]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("2_jf114")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1877690148]
+position = Vector2(0, -19.5)
+shape = SubResource("RectangleShape2D_pba6f")
+
+[node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=917965823]
+unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("3_pba6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=898102163]
+position = Vector2(0, -19.5)
+shape = SubResource("RectangleShape2D_pba6f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=120277729]
+libraries/ = SubResource("AnimationLibrary_ghpp2")
+autoplay = &"idle"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1434517001]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_wy826")
+
+[connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]

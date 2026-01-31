@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://bm06fg7pyxd74"]
+
+[ext_resource type="Script" uid="uid://dxl2hmw13psck" path="res://enemy/maggot/maggot.gd" id="1_sndct"]
+[ext_resource type="Texture2D" uid="uid://bq0alr5fb88u5" path="res://enemy/maggot/maggot.png" id="2_sndct"]
+[ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="3_26i57"]
+[ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_fhv5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljwmj"]
+size = Vector2(158, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2j0x"]
+size = Vector2(158, 32)
+
+[sub_resource type="Animation" id="Animation_a85bv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_32ick"]
+resource_name = "die"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6dvuw"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_5r16j"]
+resource_name = "walk"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a85bv"]
+_data = {
+&"RESET": SubResource("Animation_a85bv"),
+&"die": SubResource("Animation_32ick"),
+&"idle": SubResource("Animation_6dvuw"),
+&"walk": SubResource("Animation_5r16j")
+}
+
+[sub_resource type="Animation" id="Animation_ybl6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_wg5pg"]
+resource_name = "hurt"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.9, 1.9), Vector2(1.1, 1.1), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5r16j"]
+_data = {
+&"RESET": SubResource("Animation_ybl6e"),
+&"hurt": SubResource("Animation_wg5pg")
+}
+
+[node name="Maggot" type="CharacterBody2D" unique_id=982433154]
+collision_layer = 4
+script = ExtResource("1_sndct")
+hp = 4.0
+
+[node name="Graphic" type="Node2D" parent="." unique_id=890723478]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=226926205]
+scale = Vector2(2, 2)
+texture = ExtResource("2_sndct")
+flip_h = true
+hframes = 2
+region_rect = Rect2(39, 21, 42, 79)
+
+[node name="Hitbox" type="Area2D" parent="Graphic" unique_id=1479179579]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_26i57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1604968182]
+shape = SubResource("RectangleShape2D_ljwmj")
+
+[node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=1492377777]
+unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_fhv5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=80999187]
+shape = SubResource("RectangleShape2D_i2j0x")
+
+[node name="Timer" type="Timer" parent="." unique_id=462172906]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=999817442]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_a85bv")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1305595331]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_5r16j")
+
+[connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]

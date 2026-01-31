@@ -216,5 +216,19 @@ unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1831647582]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=641701939]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+offset_right = 40.0
+grow_vertical = 0
+text = "WASD移动
+鼠标左键：炎爆
+鼠标右键：龙子吐息"
+vertical_alignment = 2
+
 [connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
 [connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]

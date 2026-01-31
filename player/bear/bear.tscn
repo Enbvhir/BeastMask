@@ -349,6 +349,20 @@ one_shot = true
 unique_name_in_owner = true
 stream = ExtResource("6_4rdsq")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1153163118]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=352411863]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+offset_right = 40.0
+grow_vertical = 0
+text = "AD移动 空格跳跃
+鼠标左键：霹天雳地
+鼠标右键：雷霆咆哮"
+vertical_alignment = 2
+
 [connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
 [connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
